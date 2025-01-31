@@ -1,15 +1,45 @@
-# Salesforce-Trailhead-Api-Hack
+# Python: Getting Started
 
-This is a hack implementation to get access to Trailhead API to get Trailhead user points and other attributes.
-Requests should be used in the form
-https://trailheadapi.herokuapp.com/?link=/id/userAlias
+A barebones Django app, which can easily be deployed to Heroku.
 
-It is possible to deploy code to your own heroku instance
+This application supports the [Getting Started with Python on Heroku](https://devcenter.heroku.com/articles/getting-started-with-python) article - check it out.
 
+## Running Locally
 
-## Possible error
-Sometimes Salesforce changes the way it retrieves data internally for Trailhead data. In such cases `aura:clientOutOfSync` error happens. https://salesforce.stackexchange.com/questions/132694/auraclientoutofsync-exception-when-calling-from-lightning-after-a-while
-In such case update to code is needed to conform with newest changes.
+Make sure you have Python 3.7 [installed locally](http://install.python-guide.org). To push to Heroku, you'll need to install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli), as well as [Postgres](https://devcenter.heroku.com/articles/heroku-postgresql#local-setup).
 
-## Debug mode
-User debug mode https://trailheadapi.herokuapp.com/debug?link=/id/userAlias to debug any issues
+```sh
+$ git clone https://github.com/heroku/python-getting-started.git
+$ cd python-getting-started
+
+$ python3 -m venv getting-started
+$ pip install -r requirements.txt
+
+$ createdb python_getting_started
+
+$ python manage.py migrate
+$ python manage.py collectstatic
+
+$ heroku local
+```
+
+Your app should now be running on [localhost:5000](http://localhost:5000/).
+
+## Deploying to Heroku
+
+```sh
+$ heroku create
+$ git push heroku master
+
+$ heroku run python manage.py migrate
+$ heroku open
+```
+or
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Documentation
+
+For more information about using Python on Heroku, see these Dev Center articles:
+
+- [Python on Heroku](https://devcenter.heroku.com/categories/python)
